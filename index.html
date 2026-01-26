@@ -9,28 +9,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-/* Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
   font-family: 'Poppins', sans-serif;
   background: #0f0f0f;
   color: #fff;
+  margin: 0;
+  padding: 0;
 }
 
 /* Header */
 header {
-  background: #e50914;
-  padding: 20px 0;
+  background: url("https://i.ibb.co/Cs7SbdVt/RD393437343037303731353740732e77686174736170702e6e6574-634148.jpg");
+  background-size: cover;
+  background-position: center;
+  padding: 40px 0;
   text-align: center;
   font-size: 28px;
   font-weight: 700;
 }
-
 header p {
   font-size: 14px;
   color: #eee;
@@ -46,29 +42,21 @@ nav {
   background: #111;
   padding: 12px 0;
 }
-
 nav a {
   color: #fff;
   text-decoration: none;
   font-weight: 500;
-  transition: 0.2s;
 }
-
-nav a:hover {
-  color: #e50914;
-}
+nav a:hover { color: #e50914; }
 
 /* Container */
-.container {
-  padding: 20px;
-}
+.container { padding: 20px; }
 
 /* Search */
 .search-box {
   max-width: 400px;
   margin: 20px auto;
 }
-
 .search-box input {
   width: 100%;
   padding: 12px 15px;
@@ -84,27 +72,20 @@ nav a:hover {
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 20px;
 }
-
-/* Movie Card */
 .movie {
   background: #1c1c1c;
   border-radius: 12px;
   overflow: hidden;
   text-align: center;
+  cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
-  position: relative;
 }
-
 .movie:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(229,9,20,0.5);
 }
-
-.movie img {
-  width: 100%;
-  height: 240px;
-  object-fit: cover;
-}
+.movie img { width: 100%; height: 240px; object-fit: cover; }
+.movie h3 { font-size: 16px; margin: 10px 0; }
 
 /* Badge */
 .badge {
@@ -116,17 +97,6 @@ nav a:hover {
   font-size: 11px;
   border-radius: 5px;
   font-weight: bold;
-}
-
-.movie h3 {
-  font-size: 16px;
-  margin: 10px 0 5px;
-}
-
-.movie p {
-  font-size: 13px;
-  color: #ccc;
-  margin-bottom: 10px;
 }
 
 /* WhatsApp Button */
@@ -141,11 +111,6 @@ nav a:hover {
   text-decoration: none;
   font-weight: bold;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: 0.3s;
-}
-
-.whatsapp:hover {
-  background: #1ebe57;
 }
 
 /* Footer */
@@ -157,13 +122,45 @@ footer {
   font-size: 14px;
   color: #aaa;
 }
+
+/* Popup / Overlay */
+#movieDetails {
+  display: none;
+  position: fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.95);
+  color: #fff;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+#movieDetails .closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  cursor: pointer;
+  color: #fff;
+}
+#movieDetails .watch-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #e50914;
+  color: #fff;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-  🎬 CINEMAX
   <p>Your Ultimate Movie Hub</p>
 </header>
 
@@ -175,49 +172,130 @@ footer {
 </nav>
 
 <div class="container">
-
   <h2>Latest Movies</h2>
 
   <div class="search-box">
-    <input type="text" placeholder="Search movies..." />
+    <input type="text" id="searchInput" placeholder="Search movies..." />
   </div>
 
   <div class="movies">
+    <!-- Movie 1 -->
     <div class="movie">
-      <span class="badge">NEW</span>
-      <img src="https://via.placeholder.com/300x450" alt="Movie">
-      <h3>Movie Title 01</h3>
-      <p>Action | 2025</p>
+      <img src="https://i.ibb.co/Q7BNQrqf/RD393437343037303731353740732e77686174736170702e6e6574-569238.jpg" alt="Ratatouille">
+      <h3>Ratatouille (2007)</h3>
     </div>
 
+    <!-- Movie 2 -->
     <div class="movie">
-      <span class="badge">HD</span>
-      <img src="https://via.placeholder.com/300x450" alt="Movie">
-      <h3>Movie Title 02</h3>
-      <p>Drama | 2024</p>
+      <img src="https://i.ibb.co/yx7RvfK/RD393437343037303731353740732e77686174736170702e6e6574-177842.jpg" alt="Soorya">
+      <h3>Soorya (2025)</h3>
     </div>
 
-    <div class="movie">
-      <span class="badge">NEW</span>
-      <img src="https://via.placeholder.com/300x450" alt="Movie">
-      <h3>Movie Title 03</h3>
-      <p>Thriller | 2025</p>
-    </div>
+    <!-- Add more movies here similarly -->
+  </div> <!-- movies close -->
 
-    <div class="movie">
-      <span class="badge">HD</span>
-      <img src="https://via.placeholder.com/300x450" alt="Movie">
-      <h3>Movie Title 04</h3>
-      <p>Comedy | 2023</p>
-    </div>
+  <!-- Pagination -->
+  <div id="pagination" style="text-align:center; margin-top:30px;">
+    <button id="prevBtn">⬅ Prev</button>
+    <span id="pageInfo" style="margin:0 15px;"></span>
+    <button id="nextBtn">Next ➡</button>
   </div>
+
 </div>
 
-<a class="whatsapp" href="https://wa.me/94772461954">💬 WhatsApp</a>
+<!-- WhatsApp -->
+<a class="whatsapp" href="https://wa.me/94740571366">💬 WhatsApp</a>
 
+<!-- Footer -->
 <footer>
-© 2026 CINEMAX | Movie Info Website
+© 2026 CINEMAX | Sinhala Movie Website
+© MAIN CREATOR | PEKSHA_RASANJANA ###
+© HELP ADMINS | YASIRU_DASANTHA ###
 </footer>
+
+<!-- Popup Overlay -->
+<div id="movieDetails">
+  <span class="closeBtn">&times;</span>
+  <h3 id="detailTitle"></h3>
+  <p id="detailAction"></p>
+  <a href="#" id="detailLink" class="watch-btn">▶ Watch / Download</a>
+</div>
+
+<script>
+// Movie info
+const moviesInfo = [
+  {
+    title: "Ratatouille (2007)",
+    action: "Action | Sinhala",
+    link: "https://drive.google.com/file/d/1RnELa1HMU_B90srWoTE1woZCQRGAFI4n/view?usp=drivesdk"
+  },
+  {
+    title: "Soorya (2025)",
+    action: "Action | Sinhala",
+    link: "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/75658/Soorya.2025.720p.%40sinhalaaaa.mkv?hash=AgAD5h"
+  }
+  // add all movies here following same pattern
+];
+
+const movies = document.querySelectorAll(".movie");
+const details = document.getElementById("movieDetails");
+const closeBtn = document.querySelector("#movieDetails .closeBtn");
+const detailTitle = document.getElementById("detailTitle");
+const detailAction = document.getElementById("detailAction");
+const detailLink = document.getElementById("detailLink");
+
+// Click on movie to show overlay
+movies.forEach((card, index) => {
+  card.addEventListener("click", () => {
+    details.style.display = "flex";
+    detailTitle.innerText = moviesInfo[index].title;
+    detailAction.innerText = moviesInfo[index].action;
+    detailLink.href = moviesInfo[index].link;
+  });
+});
+
+// Close overlay
+closeBtn.addEventListener("click", () => {
+  details.style.display = "none";
+});
+
+// Search
+const searchInput = document.getElementById("searchInput");
+searchInput.addEventListener("keyup", function() {
+  const value = searchInput.value.toLowerCase();
+  movies.forEach((movie, index) => {
+    const title = movie.querySelector("h3").innerText.toLowerCase();
+    movie.style.display = title.includes(value) ? "block" : "none";
+  });
+});
+
+// Pagination
+const itemsPerPage = 10;
+let currentPage = 1;
+const totalPages = Math.ceil(movies.length / itemsPerPage);
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const pageInfo = document.getElementById("pageInfo");
+
+function showPage(page) {
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  movies.forEach((movie, index) => {
+    movie.style.display = (index >= start && index < end) ? "block" : "none";
+  });
+  pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage === totalPages;
+}
+showPage(currentPage);
+
+prevBtn.addEventListener("click", () => {
+  if(currentPage > 1) { currentPage--; showPage(currentPage); }
+});
+nextBtn.addEventListener("click", () => {
+  if(currentPage < totalPages) { currentPage++; showPage(currentPage); }
+});
+</script>
 
 </body>
 </html>
