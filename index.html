@@ -58,13 +58,12 @@ nav a:hover { color: #e50914; }
   border-radius: 20px;
   font-size: 13px;
   transition: 0.3s;
+.movie a {
+  background: var(--accent); /* use CSS variable */
+  color: #fff;
 }
-.movie a:hover { background: #ff1f2d; }
-
-#pagination { text-align: center; margin: 30px 0; }
-#pagination button {
-  background: #e50914; color: #fff; border: none; padding: 8px 16px;
-  margin: 0 5px; border-radius: 20px; font-size: 14px; cursor: pointer; transition: 0.3s;
+.movie a:hover {
+  background: lighten(var(--accent), 10%); /* or pick a lighter shade manually */
 }
 #pagination button:hover { background: #ff1f2d; }
 #pagination button:disabled { background: #555; cursor: not-allowed; }
