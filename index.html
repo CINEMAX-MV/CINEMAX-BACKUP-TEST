@@ -3,88 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CINEMAX Movies</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<title>CINEMAX MOVIES.LK</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;800&display=swap" rel="stylesheet">
+
 <style>
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #0f0f0f;
-  color: #fff;
-  margin: 0;
+:root{--accent:#e50914}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  background:#0f0f0f;
+  color:#fff;
 }
-header {
-  position: relative; /* Add this */
-  background: url("https://i.ibb.co/Cs7SbdVt/RD393437343037303731353740732e77686174736170702e6e6574-634148.jpg");
-  background-size: cover;
-  background-position: center;
-  padding: 40px 0;
-  text-align: center;
-  font-size: 28px;
-  font-weight: 700;
+
+/* HERO */
+header{
+  position:relative;
+  height:65vh;
+  background:url("https://i.ibb.co/Cs7SbdVt/RD393437343037303731353740732e77686174736170702e6e6574-634148.jpg") center/cover no-repeat;
+  display:flex;
+  align-items:flex-end;
+  padding:40px 20px;
 }
-header p { font-size: 14px; color: #eee; margin-top: 5px; font-weight: 300; }
-
-nav { display: flex; justify-content: center; gap: 25px; background: #111; padding: 12px 0; }
-nav a { color: #fff; text-decoration: none; font-weight: 500; transition: 0.2s; }
-nav a:hover { color: #e50914; }
-
-.container { padding: 20px; }
-.search-box { max-width: 400px; margin: 20px auto; }
-.search-box input { width: 100%; padding: 12px 15px; border-radius: 25px; border: none; outline: none; font-size: 14px; }
-
-.movies { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px; }
-
-.movie {
-  background: #1c1c1c;
-  border-radius: 12px;
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+header::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.4));
 }
-.movie:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(229,9,20,0.5); }
-
-.movie img { width: 100%; height: auto; object-fit: cover; display: block; }
-
-.movie h3 { font-size: 16px; margin: 10px 0 5px; }
-.movie p { font-size: 14px; color: #ccc; margin: 5px 0; }
-
-.movie a {
-  display: inline-block;
-  margin: 8px 0 12px;
-  padding: 6px 12px;
-  background: #e50914;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 20px;
-  font-size: 13px;
-  transition: 0.3s;
-.movie a {
-  background: var(--accent); /* use CSS variable */
-  color: #fff;
+.hero{position:relative;z-index:2;max-width:1200px;width:100%}
+.hero h1{
+  margin:0;
+  font-size:clamp(32px,6vw,56px);
+  font-weight:800;
+  letter-spacing:2px;
 }
-.movie a:hover {
-  background: lighten(var(--accent), 10%); /* or pick a lighter shade manually */
-}
-#pagination button:hover { background: #ff1f2d; }
-#pagination button:disabled { background: #555; cursor: not-allowed; }
-#pageInfo { font-size: 14px; color: #ccc; }
+.hero span{color:var(--accent);text-shadow:0 0 25px rgba(229,9,20,.6)}
+.hero p{margin-top:8px;color:#ddd}
 
-.whatsapp {
-  position: fixed; bottom: 20px; right: 20px; background: #25D366; color: #fff;
-  padding: 12px 18px; border-radius: 50px; text-decoration: none; font-weight: bold;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s;
+/* NAV */
+nav{
+  background:#111;
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  padding:14px 0;
 }
-.whatsapp:hover { background: #1ebe57; }
+nav a{color:#fff;text-decoration:none;font-weight:500}
+nav a:hover{color:var(--accent)}
 
-footer {
-  background: #111; text-align: center; padding: 20px; margin-top: 30px;
-  font-size: 14px; color: #aaa;
+/* CONTENT */
+.container{max-width:1200px;margin:auto;padding:20px}
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:20px 0;
+}
+.search-box input{
+  padding:12px 16px;
+  border-radius:30px;
+  border:none;
+  background:#1c1c1c;
+  color:#fff;
+}
+
+/* MOVIES */
+.movies{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+}
+.movie{
+  background:#1b1b1b;
+  border-radius:16px;
+  overflow:hidden;
+  transition:.35s;
+}
+.movie:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 30px rgba(229,9,20,.35);
+}
+.movie img{width:100%;display:block}
+.movie .info{padding:12px}
+.movie p{margin:0;font-size:12px;color:#aaa}
+.movie h3{margin:6px 0;font-size:15px}
+.movie a{
+  display:inline-block;
+  margin-top:8px;
+  padding:7px 14px;
+  background:var(--accent);
+  color:#fff;
+  text-decoration:none;
+  border-radius:30px;
+  font-size:12px;
+}
+
+/* FOOTER */
+footer{
+  background:#111;
+  text-align:center;
+  padding:25px;
+  font-size:13px;
+  color:#aaa;
 }
 </style>
 </head>
+
 <body>
 
-<header><p>Your Ultimate Movie Hub</p></header>
+<header>
+  <div class="hero">
+    <h1><span>CINEMAX</span> MOVIES.LK</h1>
+    <p>Sri Lanka’s Premium Sinhala Movie Hub</p>
+  </div>
+</header>
 
 <nav>
   <a href="#">Home</a>
@@ -94,166 +129,67 @@ footer {
 </nav>
 
 <div class="container">
+
+<div class="section-title">
   <h2>Latest Movies</h2>
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Search movies...">
   </div>
-
-  <div class="movies">
-
-<!-- Movie Cards Start -->
-
-<div class="movie">
-  <img src="https://i.ibb.co/Q7BNQrqf/RD393437343037303731353740732e77686174736170702e6e6574-569238.jpg" alt="Ratatouille">
-  <p>Action | සිංහල</p>
-  <h3>Ratatouille (2007)</h3>
-  <a href="https://drive.google.com/file/d/1RnELa1HMU_B90srWoTE1woZCQRGAFI4n/view?usp=drivesdk">▶ Watch / Download</a>
 </div>
 
-<div class="movie">
-  <img src="https://i.ibb.co/yx7RvfK/RD393437343037303731353740732e77686174736170702e6e6574-177842.jpg" alt="Soorya (2025)">
-  <p>Action | සිංහල</p>
-  <h3>Soorya (2025)</h3>
-  <a href="https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/75658/Soorya.2025.720p.%40sinhalaaaa.mkv?hash=AgAD5h">▶ Watch / Download</a>
+<div class="movies">
+
+<!-- MOVIES START -->
+
+<div class="movie"><img src="https://i.ibb.co/Q7BNQrqf/RD393437343037303731353740732e77686174736170702e6e6574-569238.jpg"><div class="info"><p>Action | සිංහල</p><h3>Ratatouille (2007)</h3><a href="https://drive.google.com/file/d/1RnELa1HMU_B90srWoTE1woZCQRGAFI4n/view">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/yx7RvfK/RD393437343037303731353740732e77686174736170702e6e6574-177842.jpg"><div class="info"><p>Action | සිංහල</p><h3>Soorya (2025)</h3><a href="https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/75658/Soorya.2025.720p.%40sinhalaaaa.mkv">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/6J81Yfvs/RD393437353638333237343640732e77686174736170702e6e6574-566677.jpg"><div class="info"><p>Action | සිංහල</p><h3>Jack And The Giant Slayer (2013)</h3><a href="https://drive.google.com/file/d/1DnUKRh6I7s6_vWGQrE5R_iYkjzyFTWFB/view">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/JWBvyc5X/RD393437343037303731353740732e77686174736170702e6e6574-308706.jpg"><div class="info"><p>Action | සිංහල</p><h3>Jungle Cruise (2021)</h3><a href="https://drive.google.com/file/d/1DqOfe5-WiFNkCmkmu1UBMRNKENAVEKf2/view">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/0pT6Mz6F/RD393437343037303731353740732e77686174736170702e6e6574-569534.jpg"><div class="info"><p>Action | සිංහල</p><h3>Garfield (2004)</h3><a href="https://drive.google.com/file/d/1UIJ0eAsC_BB6qobv8IOjmcrnmffB75U4/view">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/nsb03dpn/RD393437343037303731353740732e77686174736170702e6e6574-673085.jpg"><div class="info"><p>Action | සිංහල</p><h3>Paulie (1998)</h3><a href="https://drive.google.com/file/d/1wYOvszMsYCObW2RERK5k8nuEy9n6p6OY/view">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://files.catbox.moe/km8kh1.jpg"><div class="info"><p>Action | සිංහල</p><h3>Luck (2022)</h3><a href="https://drive.google.com/file/d/1xhkukzE_Frv14o98vaZFBRENYRSS_50W/view">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/hJ8cRShj/RD393437343037303731353740732e77686174736170702e6e6574-907221.jpg"><div class="info"><p>Action | සිංහල</p><h3>Bee (2007)</h3><a href="https://drive.google.com/file/d/1gxFdxEDI8dbG8Xs_1oPQvYPHPAiKsOkj/view">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/zHRyTnXr/RD393437343037303731353740732e77686174736170702e6e6574-121909.jpg"><div class="info"><p>Action | සිංහල</p><h3>Tinkerbell (2008)</h3><a href="https://drive.google.com/file/d/1lqHBbGM_uMIF6m7qlLSx6ou1SD8-t0xW/view">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/4ZBzG9c2/RD393437343037303731353740732e77686174736170702e6e6574-486606.jpg"><div class="info"><p>Action | සිංහල</p><h3>Bridge to Terabithia (2007)</h3><a href="https://drive.google.com/file/d/1-QX2a21LhBsV9WW04TOODET6859KUKee/view">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/k2h5tBLK/RD393437343037303731353740732e77686174736170702e6e6574-595944.jpg"><div class="info"><p>Action | සිංහල</p><h3>Penguins of Madagascar (2014)</h3><a href="https://iws.sinhalachr.workers.dev/">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://files.catbox.moe/xxim8u.jpg"><div class="info"><p>Action | සිංහල</p><h3>Kung Fu Panda 1 (2008)</h3><a href="https://mega.nz/file/HUtnyKJS#gGNSSwuAq8j4nDjZGgQuppZ9qB5muqo1bZXuZfdqeV4">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/BHj6FL0b/RD393437353638333237343640732e77686174736170702e6e6574-706082.jpg"><div class="info"><p>Action | සිංහල</p><h3>Kung Fu Panda 2 (2011)</h3><a href="https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/view">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/WWNNkr9J/RD393437353638333237343640732e77686174736170702e6e6574-595804.jpg"><div class="info"><p>Action | සිංහල</p><h3>Kung Fu Panda 3 (2016)</h3><a href="https://drive.google.com/file/d/1x56ocqZ9vANqf1xb66ILOn0w-EGc-cXm/view">▶ Watch / Download</a></div></div>
+
+<div class="movie"><img src="https://i.ibb.co/DjwGjMF/RD393437343037303731353740732e77686174736170702e6e6574-485234.jpg"><div class="info"><p>Action | සිංහල</p><h3>Baby's Day Out (1994)</h3><a href="https://drive.google.com/file/d/12PL9OL0ZR0CfR80G9y7GbZHz47HyYnb5/view">▶ Watch / Download</a></div></div>
+
+<!-- MOVIES END -->
+
 </div>
-
-<div class="movie">
-  <img src="https://i.ibb.co/6J81Yfvs/RD393437353638333237343640732e77686174736170702e6e6574-566677.jpg" alt="Jack And The Giant Slayer">
-  <p>Action | සිංහල</p>
-  <h3>Jack And The Giant Slayer (2013)</h3>
-  <a href="https://drive.google.com/file/d/1DnUKRh6I7s6_vWGQrE5R_iYkjzyFTWFB/view">▶ Watch / Download</a>
 </div>
-
-<div class="movie">
-  <img src="https://i.ibb.co/JWBvyc5X/RD393437343037303731353740732e77686174736170702e6e6574-308706.jpg" alt="Jungle Cruise">
-  <p>Action | සිංහල</p>
-  <h3>Jungle Cruise (2021)</h3>
-  <a href="https://drive.google.com/file/d/1DqOfe5-WiFNkCmkmu1UBMRNKENAVEKf2/view">▶ Watch / Download</a>
-</div>
-
-<div class="movie">
-  <img src="https://i.ibb.co/0pT6Mz6F/RD393437343037303731353740732e77686174736170702e6e6574-569534.jpg" alt="Garfield">
-  <p>Action | සිංහල</p>
-  <h3>Garfield: The Movie (2004)</h3>
-  <a href="https://drive.google.com/file/d/1UIJ0eAsC_BB6qobv8IOjmcrnmffB75U4/view?usp=drivesdk">▶ Watch / Download</a>
-</div>
-
-<div class="movie">
-  <img src="https://i.ibb.co/nsb03dpn/RD393437343037303731353740732e77686174736170702e6e6574-673085.jpg" alt="Paulie">
-  <p>Action | සිංහල</p>
-  <h3>Paulie (1998)</h3>
-  <a href="https://drive.google.com/file/d/1wYOvszMsYCObW2RERK5k8nuEy9n6p6OY/view?usp=drivesdk">▶ Watch / Download</a>
-</div>
-
-<div class="movie">
-  <img src="https://files.catbox.moe/km8kh1.jpg" alt="Luck">
-  <p>Action | සිංහල</p>
-  <h3>Luck (2022)</h3>
-  <a href="https://drive.google.com/file/d/1xhkukzE_Frv14o98vaZFBRENYRSS_50W/view?usp=drivesdk">▶ Watch / Download</a>
-</div>
-
-<div class="movie">
-  <img src="https://i.ibb.co/hJ8cRShj/RD393437343037303731353740732e77686174736170702e6e6574-907221.jpg" alt="Bee">
-  <p>Action | සිංහල</p>
-  <h3>Bee (2007)</h3>
-  <a href="https://drive.google.com/file/d/1gxFdxEDI8dbG8Xs_1oPQvYPHPAiKsOkj/view?usp=drivesdk">▶ Watch / Download</a>
-</div>
-
-<div class="movie">
-  <img src="https://i.ibb.co/zHRyTnXr/RD393437343037303731353740732e77686174736170702e6e6574-121909.jpg" alt="Tinkerbell">
-  <p>Action | සිංහල</p>
-  <h3>Tinkerbell (2008)</h3>
-  <a href="https://drive.google.com/file/d/1lqHBbGM_uMIF6m7qlLSx6ou1SD8-t0xW/view?usp=drivesdk">▶ Watch / Download</a>
-</div>
-
-<div class="movie">
-  <img src="https://i.ibb.co/4ZBzG9c2/RD393437343037303731353740732e77686174736170702e6e6574-486606.jpg" alt="Bridge to Terabithia">
-  <p>Action | සිංහල</p>
-  <h3>Bridge to Terabithia (2007)</h3>
-  <a href="https://drive.google.com/file/d/1-QX2a21LhBsV9WW04TOODET6859KUKee/view?usp=drivesdk">▶ Watch / Download</a>
-</div>
-
-<div class="movie">
-  <img src="https://i.ibb.co/k2h5tBLK/RD393437343037303731353740732e77686174736170702e6e6574-595944.jpg" alt="The Penguins of Madagascar">
-  <p>Action | සිංහල</p>
-  <h3>The Penguins of Madagascar (2014)</h3>
-  <a href="https://iws.sinhalachr.workers.dev/?id=Movzm1z3zhhQ2a7YvV4qLKGo&assetToken=zVwfjA5eG6oEk7bFqahs2K2i&download=true">▶ Watch / Download</a>
-</div>
-
-<div class="movie">
-  <img src="https://files.catbox.moe/xxim8u.jpg" alt="Kung Fu Panda 1">
-  <p>Action | සිංහල | Mega | CINEMAX.COM</p>
-  <h3>Kung Fu Panda 1 (2008)</h3>
-  <a href="https://mega.nz/file/HUtnyKJS#gGNSSwuAq8j4nDjZGgQuppZ9qB5muqo1bZXuZfdqeV4">▶ Watch / Download</a>
-</div>
-
-<div class="movie">
-  <img src="https://i.ibb.co/BHj6FL0b/RD393437353638333237343640732e77686174736170702e6e6574-706082.jpg" alt="Kung Fu Panda 2">
-  <p>Action | සිංහල</p>
-  <h3>Kung Fu Panda 2 (2011)</h3>
-  <a href="https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/view?usp=drivesdk">▶ Watch / Download</a>
-</div>
-
-<div class="movie">
-  <img src="https://i.ibb.co/WWNNkr9J/RD393437353638333237343640732e77686174736170702e6e6574-595804.jpg" alt="Kung Fu Panda 3">
-  <p>Action | Tamil</p>
-  <h3>Kung Fu Panda 3 (2016)</h3>
-  <a href="https://drive.google.com/file/d/1x56ocqZ9vANqf1xb66ILOn0w-EGc-cXm/view?usp=drivesdk">▶ Watch / Download</a>
-</div>
-
-<!-- Movie Cards End -->
-
-  </div>
-
-  <div id="pagination">
-    <button id="prevBtn">⬅ Prev</button>
-    <span id="pageInfo"></span>
-    <button id="nextBtn">Next ➡</button>
-  </div>
-</div>
-
-<a class="whatsapp" href="https://wa.me/94740571366">💬 WhatsApp</a>
 
 <footer>
-© 2026 CINEMAX | Sinhala Movie Website<br>
-© MAIN CREATOR | PEKSHA_RASANJANA<br>
-© HELP ADMINS | YASIRU_DASANTHA
+© 2026 CINEMAX MOVIES.LK<br>
+CREATOR | PEKSHA RASANJANA
 </footer>
 
 <script>
-const searchInput = document.getElementById("searchInput");
-const movies = document.querySelectorAll(".movie");
-
-searchInput.addEventListener("keyup", function () {
-  const value = searchInput.value.toLowerCase();
-  movies.forEach(movie => {
-    const title = movie.querySelector("h3").innerText.toLowerCase();
-    movie.style.display = title.includes(value) ? "block" : "none";
+const searchInput=document.getElementById("searchInput");
+const movies=document.querySelectorAll(".movie");
+searchInput.addEventListener("keyup",()=>{
+  const v=searchInput.value.toLowerCase();
+  movies.forEach(m=>{
+    m.style.display=m.innerText.toLowerCase().includes(v)?"block":"none";
   });
 });
-
-const itemsPerPage = 12;
-let currentPage = 1;
-const totalPages = Math.ceil(movies.length / itemsPerPage);
-
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
-const pageInfo = document.getElementById("pageInfo");
-
-function showPage(page) {
-  const start = (page - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
-  movies.forEach((movie, index) => {
-    movie.style.display = (index >= start && index < end) ? "block" : "none";
-  });
-  pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-  prevBtn.disabled = currentPage === 1;
-  nextBtn.disabled = currentPage === totalPages;
-}
-showPage(currentPage);
-
-prevBtn.addEventListener("click", () => { if(currentPage>1){ currentPage--; showPage(currentPage); } });
-nextBtn.addEventListener("click", () => { if(currentPage<totalPages){ currentPage++; showPage(currentPage); } });
 </script>
 
 </body>
