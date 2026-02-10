@@ -26,14 +26,14 @@ header.topbar {
   top: 0;
   z-index: 999;
   flex-wrap: wrap;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.6);
 }
 header.topbar .logo {
-  font-size: 28px;
+  font-size: 30px;
   font-weight: 800;
   color: #e50914;
-  letter-spacing: 3px;
-  text-shadow: 1px 1px 5px rgba(255,0,20,0.7);
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 8px rgba(255,0,20,0.7);
 }
 header.topbar nav {
   display: flex;
@@ -43,7 +43,7 @@ header.topbar nav {
 header.topbar nav a {
   font-size: 14px;
   padding: 6px 10px;
-  transition: 0.2s;
+  transition: 0.3s;
   border-radius: 6px;
 }
 header.topbar nav a:hover { background: #e50914; color: #fff; }
@@ -56,10 +56,10 @@ header.topbar nav a:hover { background: #e50914; color: #fff; }
 }
 .container h2 {
   margin-bottom: 20px;
-  font-size: 26px;
+  font-size: 28px;
   text-align: center;
   color: #e50914;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
 }
 
 /* Search Box */
@@ -82,21 +82,22 @@ header.topbar nav a:hover { background: #e50914; color: #fff; }
 /* Movies Grid */
 .movies {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 25px;
 }
 
 /* Movie Card */
 .movie {
-  background: #1c1c1c;
+  background: #1a1a1a;
   border-radius: 12px;
   overflow: hidden;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
+  position: relative;
 }
 .movie:hover {
-  transform: scale(1.03);
+  transform: translateY(-6px);
   box-shadow: 0 12px 25px rgba(229,9,20,0.5);
 }
 .movie img {
@@ -106,38 +107,26 @@ header.topbar nav a:hover { background: #e50914; color: #fff; }
   aspect-ratio: 2/3;
   object-fit: cover;
   transition: transform 0.3s;
+  border-bottom: 1px solid #333;
 }
 .movie:hover img {
   transform: scale(1.05);
 }
 .movie-info {
   padding: 12px 10px 16px 10px;
+  transition: color 0.3s;
 }
 .movie-info h3 {
   font-size: 16px;
-  margin: 8px 0 4px;
+  margin: 6px 0 4px;
   color: #fff;
+  font-weight: 600;
 }
 .movie-info p {
-  font-size: 14px;
-  color: #ccc;
-  margin: 0 0 10px 0;
+  font-size: 13px;
+  color: #aaa;
+  margin: 0;
 }
-
-/* Watch / Download Button */
-.movie .watch-btn {
-  display: inline-block;
-  width: 90%;
-  margin: 0 auto 12px auto;
-  padding: 8px 0;
-  background: #e50914;
-  color: #fff;
-  border-radius: 25px;
-  font-size: 14px;
-  font-weight: 600;
-  transition: 0.3s;
-}
-.movie .watch-btn:hover { background: #ff1f2d; }
 
 /* Footer */
 footer {
@@ -149,22 +138,16 @@ footer {
   color: #aaa;
 }
 
-/* Responsive Fixes */
+/* Responsive */
 @media (max-width: 768px) {
-  header.topbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  header.topbar nav {
-    gap: 12px;
-  }
-  .container h2 { font-size: 22px; }
+  header.topbar { flex-direction: column; align-items: flex-start; }
+  header.topbar nav { gap: 12px; }
+  .container h2 { font-size: 24px; }
 }
 @media (max-width: 480px) {
   .search-box { width: 90%; }
   .movie-info h3 { font-size: 14px; }
   .movie-info p { font-size: 12px; }
-  .movie .watch-btn { font-size: 13px; }
 }
 </style>
 </head>
@@ -194,9 +177,8 @@ footer {
         <p>Action | සිංහල</p>
         <h3>Epic (2013)</h3>
       </div>
-      <a href="https://drive.google.com/file/d/1jlY0iArdFPbyGA2bQJGwAGskjePyn7Q0/view?usp=drivesdk" class="watch-btn">▶ Watch / Download</a>
     </div>
-    <!-- Add more movie cards similarly -->
+    <!-- Add more movie cards here -->
   </div>
 </div>
 
