@@ -154,11 +154,6 @@ window.onload = function(){
   let movieKey = getQueryVariable("movie") || "epic"; // default
   let movie = moviesData[movieKey];
 
-window.onload = function(){
-  let movieKey = getQueryVariable("movie") || "Kungfu Panda 3"; // default
-  let movie = moviesData[movieKey];
- 
-
   document.querySelector(".hero img").src = movie.poster;
   document.getElementById('movie-title').innerText = movie.title;
 
