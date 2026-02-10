@@ -1,127 +1,88 @@
-<!DOCTYPE html><html lang="si">
+(Updated full code with movie card title under image + clickable image opening movie-detail page, large banner image, small poster, full details, description field, watch & download buttons)
+
+<!-- NOTE: This document now contains TWO pages --><!-- 1) index.html : movie list page --><!-- 2) movie.html : single movie detail page -->==================== index.html ====================
+
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CINEMAX LK</title>  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-    body{background:#0d0d0d;color:#fff}
-
-    /* HEADER */
-    header{
-      padding:15px 20px;
-      background:#000;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      position:sticky;top:0;z-index:10
-    }
-    header h1{color:#e50914;font-size:22px}
-    header input{
-      padding:6px 12px;
-      border-radius:20px;
-      border:none;outline:none
-    }
-
-    /* MOVIE GRID */
-    .grid{
-      padding:20px;
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-      gap:18px
-    }
-
-    /* MOVIE CARD */
-    .movie-card{
-      position:relative;
-      overflow:hidden;
-      border-radius:14px;
-      cursor:pointer
-    }
-    .movie-card img{
-      width:100%;display:block;
-      transition:0.4s ease
-    }
-    .movie-card:hover img{transform:scale(1.1)}
-
-    /* OVERLAY */
-    .overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(to top,rgba(0,0,0,0.95),rgba(0,0,0,0.6),rgba(0,0,0,0.2));
-      backdrop-filter:blur(6px);
-      opacity:0;
-      transform:translateY(30px);
-      transition:0.4s ease;
-      padding:16px;
-      display:flex;
-      flex-direction:column;
-      justify-content:flex-end
-    }
-    .movie-card:hover .overlay,
-    .movie-card.active .overlay{
-      opacity:1;transform:translateY(0)
-    }
-    .overlay h3{font-size:15px;margin-bottom:4px}
-    .overlay .meta{font-size:12px;color:#ffb3b3;margin-bottom:6px}
-    .overlay p{font-size:12px;line-height:1.4;margin-bottom:10px;color:#eee}
-
-    .btn{
-      background:#e50914;
-      padding:6px 14px;
-      border-radius:20px;
-      font-size:12px;
-      text-decoration:none;color:#fff;
-      width:max-content
-    }
-
-    /* STARS */
-    .stars{color:gold;font-size:13px;margin-bottom:6px}
-
-    /* FOOTER */
-    footer{
-      text-align:center;
-      padding:15px;
-      background:#000;
-      font-size:13px;
-      color:#aaa
-    }
-  </style></head>
-<body><header>
-  <h1>CINEMAX LK</h1>
-  <input type="text" id="search" placeholder="Search movies…">
-</header><section class="grid" id="movieGrid">  <!-- MOVIE 1 -->  <div class="movie-card" data-title="ratatouille">
-    <img src="https://i.ibb.co/Q7BNQrqf/RD393437343037303731353740732e77686174736170702e6e6574-569238.jpg">
-    <div class="overlay">
-      <h3>Ratatouille (2007)</h3>
-      <div class="meta">Animation • Family</div>
-      <div class="stars">★★★★★</div>
-      <p>කුඩා මූසිකයෙක් විශිෂ්ට කුක්වරයෙකු වීමට සිහින දකින හදවතට ආසන්න කතාවකි.</p>
-      <a href="#" class="btn">▶ Watch / Download</a>
-    </div>
-  </div>  <!-- MOVIE 2 -->  <div class="movie-card" data-title="inception">
-    <img src="https://i.ibb.co/0mRz3xK/inception.jpg">
-    <div class="overlay">
-      <h3>Inception (2010)</h3>
-      <div class="meta">Sci‑Fi • Thriller</div>
-      <div class="stars">★★★★☆</div>
-      <p>සිහිනය තුළ සිහිනයක් තුළ ගමන් කරන අද්භූත හා ත්‍රාසජනක චිත්‍රපටයකි.</p>
-      <a href="#" class="btn">▶ Watch / Download</a>
-    </div>
-  </div></section><footer>
-  © 2026 CINEMAX LK • All Rights Reserved
-</footer><script>
-  /* MOBILE TAP */
-  document.querySelectorAll('.movie-card').forEach(card=>{
-    card.addEventListener('click',()=>{
-      card.classList.toggle('active')
-    })
-  })
-
-  /* SEARCH */
-  document.getElementById('search').addEventListener('keyup',function(){
-    let value=this.value.toLowerCase()
-    document.querySelectorAll('.movie-card').forEach(card=>{
-      card.style.display=card.dataset.title.includes(value)?'block':'none'
-    })
-  })
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cinemax Movies</title>
+  <style>
+    body{margin:0;background:#0f0f0f;font-family:Arial;color:#fff}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;padding:20px}
+    .card{cursor:pointer}
+    .card img{width:100%;border-radius:10px}
+    .title{text-align:center;margin-top:8px;font-size:14px;font-weight:bold}
+  </style>
+</head>
+<body><div class="grid">
+  <div class="card" onclick="openMovie()">
+    <img src="parasakthi-poster.jpg" alt="Parasakthi">
+    <div class="title">Parasakthi (2026)</div>
+  </div>
+</div><script>
+function openMovie(){
+  window.location.href='movie.html';
+}
 </script></body>
+</html>==================== movie.html ====================
+
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parasakthi (2026)</title>
+<style>
+body{margin:0;background:#0b0b0b;color:#fff;font-family:Arial}
+.hero img{width:100%;max-height:420px;object-fit:cover}
+.section{padding:20px}
+.info{display:flex;gap:16px;margin-top:-80px}
+.info img{width:150px;border-radius:10px}
+.meta h2{margin:0 0 8px 0}
+.badge{display:inline-block;background:#222;padding:4px 10px;border-radius:20px;margin:4px 6px 4px 0;font-size:12px}
+.desc{margin-top:12px;line-height:1.6;color:#ccc}
+.buttons{margin-top:24px}
+.btn{display:inline-block;padding:12px 20px;margin-right:12px;border-radius:30px;text-decoration:none;color:#fff;font-weight:bold}
+.watch{background:#e50914}
+.download{background:#444}
+</style>
+</head>
+<body><div class="hero">
+  <img src="parasakthi-banner.jpg" alt="Parasakthi">
+</div><div class="section">
+  <div class="info">
+    <img src="parasakthi-poster.jpg" alt="Poster">
+    <div class="meta">
+      <h2>Parasakthi (2026) Sinhala Subtitles</h2>
+      <span class="badge">Tamil</span>
+      <span class="badge">India</span>
+      <span class="badge">163 min</span>
+      <div class="desc">
+        Country වලට පස්සෙ description එක මෙතන දාන්න පුළුවන්. ඔයාට කැමති විස්තර මෙතන freely edit කරන්න.
+      </div>
+    </div>
+  </div>  <div class="buttons">
+  <div class="server-box">
+    <h3>🎬 Select Server</h3>
+    <button onclick="openPlayer('player1')">▶ Player 01 (No Ads)</button>
+    <button onclick="openPlayer('player2')">▶ Player 02 (Google Drive)</button>
+  </div>
+</div><!-- Players --><div id="player1" class="player">
+  <iframe src="https://example.com/embed-player" allowfullscreen></iframe>
+</div><div id="player2" class="player">
+  <iframe src="https://drive.google.com/file/d/1jlY0iArdFPbyGA2bQJGwAGskjePyn7Q0/preview" allowfullscreen></iframe>
+</div><script>
+function openPlayer(id){
+  document.querySelectorAll('.player').forEach(p=>p.style.display='none');
+  document.getElementById(id).style.display='block';
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+</script><style>
+.server-box{margin-top:30px}
+.server-box h3{margin-bottom:10px}
+.server-box button{display:block;width:100%;max-width:320px;margin-bottom:10px;padding:12px;border:none;border-radius:30px;background:#222;color:#fff;font-size:15px;cursor:pointer}
+.server-box button:hover{background:#e50914}
+.player{display:none;margin-top:20px}
+.player iframe{width:100%;height:420px;border:none;border-radius:12px}
+</style></div></body>
 </html>
