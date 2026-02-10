@@ -1,88 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Epic (2013) | Cinemax</title>
+<title>Cinemax - Movie Details</title>
 <style>
 body{margin:0;background:#0b0b0b;color:#fff;font-family:Arial,Helvetica,sans-serif}
-  
-.hero img{width:100%;max-height:420px;object-fit:cover}
-
-.container{padding:20px}
-
-.movie-head{display:flex;gap:18px;margin-top:-90px;flex-wrap:wrap} 
-.movie-head img{width:160px;border-radius:12px}
-
-.details h1{margin:0 0 10px 0;font-size:24px}
-
+.hero img{width:100%;max-height:420px;object-fit:cover;border-bottom:4px solid #e50914}
+.container{padding:20px;text-align:center}
 .badge{display:inline-block;background:#222;padding:5px 12px;border-radius:20px;margin:4px 6px 4px 0;font-size:13px;color:#ddd}
-
-.desc{margin-top:14px;line-height:1.7;color:#ccc}
-
-.server-box{margin-top:30px} 
-.server-box h3{margin-bottom:12px} 
-.server-box button{display:block;width:100%;max-width:320px;margin-bottom:12px;padding:14px;border:none;border-radius:30px;background:#1f1f1f;color:#fff;font-size:15px;cursor:pointer} 
+.server-box{margin-top:30px;text-align:center}
+.server-box button{display:block;width:100%;max-width:320px;margin:10px auto;padding:14px;border:none;border-radius:30px;background:#1f1f1f;color:#fff;font-size:15px;cursor:pointer}
 .server-box button:hover{background:#e50914}
-
-.player{display:none;margin-top:20px} 
-.player iframe{width:100%;height:420px;border:none;border-radius:12px}
-
-@media(max-width:600px){ 
-.movie-head{margin-top:-60px} 
-.movie-head img{width:130px} 
-.details h1{font-size:20px} } </style>
-
+.player{display:none;margin-top:20px;text-align:center}
+.player iframe{width:100%;max-width:720px;height:420px;border:none;border-radius:12px}
+#movie-title{margin-top:20px;font-size:28px}
+#movie-badges{text-align:center;margin-top:10px}
+#movie-desc{color:#ccc;line-height:1.7;margin-top:14px;text-align:center;max-width:720px;margin-left:auto;margin-right:auto}
+</style>
 </head>
 <body>
-  <!-- Hero Banner -->
-  <div class="hero">
-    <img src="https://i.ibb.co/nq4BkY7Q/RD393437343037303731353740732e77686174736170702e6e6574-633887.jpg" alt="Epic Banner">
-  </div>
-  
-  <div class="container">  
-    
-    <!-- Movie Info -->
-    <div class="movie-head">
-    <img src="https://i.ibb.co/nq4BkY7Q/RD393437343037303731353740732e77686174736170702e6e6574-633887.jpg" alt="Epic Poster"><div class="details">
-  <h1>Epic (2013) Sinhala Subtitles</h1>
 
-  <span class="badge">Action</span>
-  <span class="badge">English</span>
-  <span class="badge">USA</span>
-  <span class="badge">102 min</span>
-
-  <div class="desc">
-    මෙතනට ඔයාට movie description එක freely දාන්න පුළුවන්. Country badges වලට පස්සෙ description එක show වෙන්නේ මේ විදියට. Story, quality, subtitles ගැන ඔයාට කැමති විස්තර add කරන්න.
-  </div>
+<div class="hero">
+  <img src="" alt="Movie Banner">
 </div>
 
-  </div>  
-    <!-- Player Servers -->  
-    <div class="server-box">
-    <h3>🎬 Select Server</h3>
-    <button onclick="openPlayer('p1')">▶ Player 01 (Fast)</button>
-    <button onclick="openPlayer('p2')">▶ Player 02 (Google Drive)</button>
-  </div>  
-    
-    <!-- Players -->  
-    <div id="p1" class="player">
-    <iframe src="https://example.com/embed" allowfullscreen></iframe>
-  </div>  
-    
-    <div id="p2" class="player">
-    <iframe src="https://drive.google.com/file/d/1jlY0iArdFPbyGA2bQJGwAGskjePyn7Q0/preview" allowfullscreen></iframe>
-  </div>
-  
-  </div>
-  
-  <script>
+<div class="container">
+  <h1 id="movie-title"></h1>
+  <div id="movie-badges"></div>
+  <p id="movie-desc"></p>
+  <div class="server-box" id="server-buttons"></div>
+  <div id="player-container"></div>
+</div>
+
+<script>
+// Get query parameter
+function getQueryVariable(variable) {
+  let query = window.location.search.substring(1);
+  let vars = query.split("&");
+  for (let i=0;i<vars.length;i++) {
+      let pair = vars[i].split("=");
+      if(pair[0] == variable){return pair[1];}
+  }
+  return(false);
+}
+
+// Movies data
+const moviesData = {
+  epic: {
+    title: "Epic (2013) Sinhala Subtitles",
+    badges: "Action | English | USA | 102 min",
+    desc: "Epic movie description here. Story, quality, subtitles, etc.",
+    players: [
+      "https://example.com/embed1",
+      "https://drive.google.com/file/d/1jlY0iArdFPbyGA2bQJGwAGskjePyn7Q0/preview"
+    ],
+    poster: "https://i.ibb.co/nq4BkY7Q/RD393437343037303731353740732e77686174736170702e6e6574-633887.jpg"
+  },
+  frozen: {
+    title: "Frozen (2013) English",
+    badges: "Animation | English | USA | 102 min",
+    desc: "Frozen movie description goes here.",
+    players: [
+      "https://example.com/frozen1",
+      "https://example.com/frozen2"
+    ],
+    poster: "https://i.ibb.co/0FtrXzM/frozen-poster.jpg"
+  }
+};
+
+// Load movie
+window.onload = function(){
+  let movieKey = getQueryVariable("movie") || "epic"; // default
+  let movie = moviesData[movieKey];
+
+  document.querySelector(".hero img").src = movie.poster;
+  document.getElementById('movie-title').innerText = movie.title;
+
+  let badgeHTML = '';
+  movie.badges.split('|').forEach(b=>{badgeHTML+=`<span class="badge">${b.trim()}</span>`});
+  document.getElementById('movie-badges').innerHTML = badgeHTML;
+
+  document.getElementById('movie-desc').innerText = movie.desc;
+
+  // Server buttons
+  let btnHTML = '';
+  movie.players.forEach((p,i)=>{
+    btnHTML+=`<button onclick="openPlayer('player${i}')">▶ Player ${i+1}</button>`;
+  });
+  document.getElementById('server-buttons').innerHTML = btnHTML;
+
+  // Players
+  let playerHTML = '';
+  movie.players.forEach((p,i)=>{
+    playerHTML+=`<div id="player${i}" class="player"><iframe src="${p}" allowfullscreen></iframe></div>`;
+  });
+  document.getElementById('player-container').innerHTML = playerHTML;
+
+  // Hide players initially
+  document.querySelectorAll('.player').forEach(p=>p.style.display='none');
+}
+
+// Open player
 function openPlayer(id){
   document.querySelectorAll('.player').forEach(p=>p.style.display='none');
   document.getElementById(id).style.display='block';
   document.getElementById(id).scrollIntoView({behavior:'smooth'});
 }
 </script>
+
 </body>
 </html>
