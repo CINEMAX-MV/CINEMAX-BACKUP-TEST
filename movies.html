@@ -3,190 +3,190 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cinemax - Movie Details</title>
+<title>Cinemax Movie</title>
+
 <style>
 body{margin:0;background:#0b0b0b;color:#fff;font-family:Arial,Helvetica,sans-serif}
-.hero img{width:100%;max-height:420px;object-fit:cover;border-bottom:4px solid #e50914}
-.container{padding:20px;text-align:center}
-.badge{display:inline-block;background:#222;padding:5px 12px;border-radius:20px;margin:4px 6px 4px 0;font-size:13px;color:#ddd}
-.server-box{margin-top:30px;text-align:center}
-.server-box button{display:block;width:100%;max-width:320px;margin:10px auto;padding:14px;border:none;border-radius:30px;background:#1f1f1f;color:#fff;font-size:15px;cursor:pointer}
+
+.hero img{width:100%;max-height:420px;object-fit:cover}
+
+.container{padding:20px}
+
+.movie-head{display:flex;gap:18px;margin-top:-90px;flex-wrap:wrap}
+.movie-head img{width:160px;border-radius:12px}
+
+.details h1{margin:0 0 10px 0;font-size:24px}
+
+.badge{
+display:inline-block;
+background:#222;
+padding:5px 12px;
+border-radius:20px;
+margin:4px 6px 4px 0;
+font-size:13px;
+color:#ddd
+}
+
+.desc{margin-top:14px;line-height:1.7;color:#ccc}
+
+.server-box{margin-top:30px}
+.server-box h3{margin-bottom:12px}
+.server-box button{
+display:block;
+width:100%;
+max-width:320px;
+margin-bottom:12px;
+padding:14px;
+border:none;
+border-radius:30px;
+background:#1f1f1f;
+color:#fff;
+font-size:15px;
+cursor:pointer
+}
 .server-box button:hover{background:#e50914}
-.player{display:none;margin-top:20px;text-align:center}
-.player iframe{width:100%;max-width:720px;height:420px;border:none;border-radius:12px}
-#movie-title{margin-top:20px;font-size:28px}
-#movie-badges{text-align:center;margin-top:10px}
-#movie-desc{color:#ccc;line-height:1.7;margin-top:14px;text-align:center;max-width:720px;margin-left:auto;margin-right:auto}
+
+.player{display:none;margin-top:20px}
+.player iframe{
+width:100%;
+height:420px;
+border:none;
+border-radius:12px
+}
+
+@media(max-width:600px){
+.movie-head{margin-top:-60px}
+.movie-head img{width:130px}
+.details h1{font-size:20px}
+}
 </style>
 </head>
+
 <body>
 
+<!-- HERO -->
 <div class="hero">
   <img src="" alt="Movie Banner">
 </div>
 
 <div class="container">
-  <h1 id="movie-title"></h1>
-  <div id="movie-badges"></div>
-  <p id="movie-desc"></p>
-  <div class="server-box" id="server-buttons"></div>
-  <div id="player-container"></div>
+
+<!-- MOVIE INFO -->
+<div class="movie-head">
+  <img id="movie-poster" src="" alt="Poster">
+  <div class="details">
+    <h1 id="movie-title"></h1>
+    <div id="movie-badges"></div>
+    <div class="desc" id="movie-desc"></div>
+  </div>
+</div>
+
+<!-- SERVERS -->
+<div class="server-box">
+  <h3>🎬 Select Server</h3>
+  <div id="server-buttons"></div>
+</div>
+
+<!-- PLAYERS -->
+<div id="player-container"></div>
+
 </div>
 
 <script>
-// Get query parameter
-function getQueryVariable(variable) {
-  let query = window.location.search.substring(1);
-  let vars = query.split("&");
-  for (let i=0;i<vars.length;i++) {
-      let pair = vars[i].split("=");
-      if(pair[0] == variable){return pair[1];}
-  }
-  return(false);
-}
-
-// Movies data
+// ================= MOVIE DATA =================
 const moviesData = {
-  epic: {
-    title: "Epic (2013) Sinhala Subtitles",
-    badges: "Action | English | USA | 102 min",
-    desc: "Epic movie description here. Story, quality, subtitles, etc.",
-    players: [
-      "https://example.com/embed1",
+  epic:{
+    title:"Epic (2013) Sinhala Subtitles",
+    badges:"Animation | English | USA | 102 min",
+    desc:"Epic animated adventure movie with Sinhala subtitles.",
+    poster:"https://i.ibb.co/nq4BkY7Q/RD393437343037303731353740732e77686174736170702e6e6574-633887.jpg",
+    players:[
       "https://drive.google.com/file/d/1jlY0iArdFPbyGA2bQJGwAGskjePyn7Q0/preview"
-    ],
-    poster: "https://i.ibb.co/nq4BkY7Q/RD393437343037303731353740732e77686174736170702e6e6574-633887.jpg"
+    ]
   },
-  const movies = {
-  ratatouille: {
-    title: "Ratatouille (2007) Sinhala Subtitles",
-    badges: "Animation | Sinhala | 111 min",
-    desc: "Ratatouille animated movie with Sinhala subtitles.",
-    players: [
+
+  ratatouille:{
+    title:"Ratatouille (2007) Sinhala Subtitles",
+    badges:"Animation | Sinhala | 2007",
+    desc:"Ratatouille animated movie with Sinhala subtitles.",
+    poster:"https://i.ibb.co/Q7BNQrqf/RD393437343037303731353740732e77686174736170702e6e6574-569238.jpg",
+    players:[
       "https://drive.google.com/file/d/1RnELa1HMU_B90srWoTE1woZCQRGAFI4n/preview"
-    ],
-    poster: "https://i.ibb.co/Q7BNQrqf/RD393437343037303731353740732e77686174736170702e6e6574-569238.jpg"
+    ]
   },
 
-  soorya: {
-    title: "Soorya (2025) Sinhala Subtitles",
-    badges: "Action | Sinhala | 2025",
-    desc: "Soorya 2025 Sinhala subtitle movie.",
-    players: [
-      "https://publicfiletolinkbotsvhshs-82bc20e41c1f.herokuapp.com/75658/Soorya.2025.720p.%40sinhalaaaa.mkv"
-    ],
-    poster: "https://i.ibb.co/yx7RvfK/RD393437343037303731353740732e77686174736170702e6e6574-177842.jpg"
-  },
-
-  jackAndGiantSlayer: {
-    title: "Jack And The Giant Slayer (2013) Sinhala Subtitles",
-    badges: "Adventure | Sinhala | 2013",
-    desc: "Jack And The Giant Slayer fantasy adventure movie.",
-    players: [
-      "https://drive.google.com/file/d/1DnUKRh6I7s6_vWGQrE5R_iYkjzyFTWFB/preview"
-    ],
-    poster: "https://i.ibb.co/6J81Yfvs/RD393437353638333237343640732e77686174736170702e6e6574-566677.jpg"
-  },
-
-  jungleCruise: {
-    title: "Jungle Cruise (2021) Sinhala Subtitles",
-    badges: "Adventure | Sinhala | 2021",
-    desc: "Jungle Cruise adventure movie with Sinhala subtitles.",
-    players: [
-      "https://drive.google.com/file/d/1DqOfe5-WiFNkCmkmu1UBMRNKENAVEKf2/preview"
-    ],
-    poster: "https://i.ibb.co/JWBvyc5X/RD393437343037303731353740732e77686174736170702e6e6574-308706.jpg"
-  },
-
-  garfield1: {
-    title: "Garfield: The Movie (2004) Sinhala Subtitles",
-    badges: "Comedy | Sinhala | 2004",
-    desc: "Garfield first movie with Sinhala subtitles.",
-    players: [
-      "https://drive.google.com/file/d/1UIJ0eAsC_BB6qobv8IOjmcrnmffB75U4/preview"
-    ],
-    poster: "https://i.ibb.co/0pT6Mz6F/RD393437343037303731353740732e77686174736170702e6e6574-569534.jpg"
-  },
-
-  paulie: {
-    title: "Paulie (1998) Sinhala Subtitles",
-    badges: "Family | Sinhala | 1998",
-    desc: "Paulie family adventure movie.",
-    players: [
-      "https://drive.google.com/file/d/1wYOvszMsYCObW2RERK5k8nuEy9n6p6OY/preview"
-    ],
-    poster: "https://i.ibb.co/nsb03dpn/RD393437343037303731353740732e77686174736170702e6e6574-673085.jpg"
-  },
-
-  kungfuPanda1: {
-    title: "Kung Fu Panda (2008) Sinhala Subtitles",
-    badges: "Animation | Sinhala | 2008",
-    desc: "Kung Fu Panda part 1 Sinhala subtitles.",
-    players: [
+  kungfupanda1:{
+    title:"Kung Fu Panda (2008) Sinhala Subtitles",
+    badges:"Animation | Sinhala | 2008",
+    desc:"Kung Fu Panda part 1 with Sinhala subtitles.",
+    poster:"https://i.ibb.co/k2h5tBLK/RD393437343037303731353740732e77686174736170702e6e6574-595944.jpg",
+    players:[
       "https://drive.google.com/file/d/15jTNmFwXkd3Ujy6oyI69jxkyWEFl64WG/preview"
-    ],
-    poster: "https://i.ibb.co/k2h5tBLK/RD393437343037303731353740732e77686174736170702e6e6574-595944.jpg"
+    ]
   },
 
-  kungfuPanda2: {
-    title: "Kung Fu Panda 2 (2011) Sinhala Subtitles",
-    badges: "Animation | Sinhala | 2011",
-    desc: "Kung Fu Panda part 2 Sinhala subtitles.",
-    players: [
+  kungfupanda2:{
+    title:"Kung Fu Panda 2 (2011) Sinhala Subtitles",
+    badges:"Animation | Sinhala | 2011",
+    desc:"Kung Fu Panda part 2 with Sinhala subtitles.",
+    poster:"https://i.ibb.co/BHj6FL0b/RD393437353638333237343640732e77686174736170702e6e6574-706082.jpg",
+    players:[
       "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview"
-    ],
-    poster: "https://i.ibb.co/BHj6FL0b/RD393437353638333237343640732e77686174736170702e6e6574-706082.jpg"
+    ]
   },
 
-  kungfuPanda3: {
-    title: "Kung Fu Panda 3 (2016) Sinhala Subtitles",
-    badges: "Animation | Sinhala | 2016",
-    desc: "Kung Fu Panda part 3 Sinhala subtitles.",
-    players: [
+  kungfupanda3:{
+    title:"Kung Fu Panda 3 (2016) Sinhala Subtitles",
+    badges:"Animation | Sinhala | 2016",
+    desc:"Kung Fu Panda part 3 with Sinhala subtitles.",
+    poster:"https://i.ibb.co/WWNNkr9J/RD393437353638333237343640732e77686174736170702e6e6574-595804.jpg",
+    players:[
       "https://drive.google.com/file/d/1x56ocqZ9vANqf1xb66ILOn0w-EGc-cXm/preview"
-    ],
-    poster: "https://i.ibb.co/WWNNkr9J/RD393437353638333237343640732e77686174736170702e6e6574-595804.jpg"
+    ]
   }
 };
 
-// Load movie
-window.onload = function(){
-  let movieKey = getQueryVariable("movie") || "epic"; // default
-  let movie = moviesData[movieKey];
-
-  document.querySelector(".hero img").src = movie.poster;
-  document.getElementById('movie-title').innerText = movie.title;
-
-  let badgeHTML = '';
-  movie.badges.split('|').forEach(b=>{badgeHTML+=`<span class="badge">${b.trim()}</span>`});
-  document.getElementById('movie-badges').innerHTML = badgeHTML;
-
-  document.getElementById('movie-desc').innerText = movie.desc;
-
-  // Server buttons
-  let btnHTML = '';
-  movie.players.forEach((p,i)=>{
-    btnHTML+=`<button onclick="openPlayer('player${i}')">▶ Player ${i+1}</button>`;
-  });
-  document.getElementById('server-buttons').innerHTML = btnHTML;
-
-  // Players
-  let playerHTML = '';
-  movie.players.forEach((p,i)=>{
-    playerHTML+=`<div id="player${i}" class="player"><iframe src="${p}" allowfullscreen></iframe></div>`;
-  });
-  document.getElementById('player-container').innerHTML = playerHTML;
-
-  // Hide players initially
-  document.querySelectorAll('.player').forEach(p=>p.style.display='none');
+// =============== HELPERS =================
+function getQueryVariable(v){
+  const q=window.location.search.substring(1).split("&");
+  for(let i=0;i<q.length;i++){
+    const p=q[i].split("=");
+    if(p[0]==v) return p[1];
+  }
+  return null;
 }
 
-// Open player
 function openPlayer(id){
-  document.querySelectorAll('.player').forEach(p=>p.style.display='none');
-  document.getElementById(id).style.display='block';
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  document.querySelectorAll(".player").forEach(p=>p.style.display="none");
+  document.getElementById(id).style.display="block";
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
+
+// =============== LOAD MOVIE =================
+window.onload=function(){
+  const key=getQueryVariable("movie") || "epic";
+  const movie=moviesData[key];
+
+  document.querySelector(".hero img").src=movie.poster;
+  document.getElementById("movie-poster").src=movie.poster;
+  document.getElementById("movie-title").innerText=movie.title;
+  document.getElementById("movie-desc").innerText=movie.desc;
+
+  let badges="";
+  movie.badges.split("|").forEach(b=>{
+    badges+=`<span class="badge">${b.trim()}</span>`;
+  });
+  document.getElementById("movie-badges").innerHTML=badges;
+
+  let btns="", players="";
+  movie.players.forEach((p,i)=>{
+    btns+=`<button onclick="openPlayer('player${i}')">▶ Player ${i+1}</button>`;
+    players+=`<div id="player${i}" class="player"><iframe src="${p}" allowfullscreen></iframe></div>`;
+  });
+
+  document.getElementById("server-buttons").innerHTML=btns;
+  document.getElementById("player-container").innerHTML=players;
+};
 </script>
 
 </body>
