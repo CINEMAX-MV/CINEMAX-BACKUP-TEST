@@ -2,192 +2,80 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>Baby's Day Out (1994) | Cinemax</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cinemax Movie</title>
 
 <style>
-body{margin:0;background:#0b0b0b;color:#fff;font-family:Arial,Helvetica,sans-serif}
-
-.hero img{width:100%;max-height:420px;object-fit:cover}
-
-.container{padding:20px}
-
-.movie-head{display:flex;gap:18px;margin-top:-90px;flex-wrap:wrap}
-.movie-head img{width:160px;border-radius:12px}
-
-.details h1{margin:0 0 10px 0;font-size:24px}
-
-.badge{
-display:inline-block;
-background:#222;
-padding:5px 12px;
-border-radius:20px;
-margin:4px 6px 4px 0;
-font-size:13px;
-color:#ddd
+body{
+  margin:0;
+  background:#0b0b0b;
+  color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
 }
-
-.desc{margin-top:14px;line-height:1.7;color:#ccc}
-
-.server-box{margin-top:30px}
-.server-box h3{margin-bottom:12px}
-.server-box button{
-display:block;
-width:100%;
-max-width:320px;
-margin-bottom:12px;
-padding:14px;
-border:none;
-border-radius:30px;
-background:#1f1f1f;
-color:#fff;
-font-size:15px;
-cursor:pointer
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:15px;
 }
-.server-box button:hover{background:#e50914}
-
-.player{display:none;margin-top:20px}
-.player iframe{
-width:100%;
-height:420px;
-border:none;
-border-radius:12px
+.poster{
+  width:100%;
+  max-height:420px;
+  object-fit:cover;
+  border-radius:10px;
 }
-
-@media(max-width:600px){
-.movie-head{margin-top:-60px}
-.movie-head img{width:130px}
-.details h1{font-size:20px}
+h1{
+  margin-top:15px;
+}
+.info{
+  color:#ccc;
+  margin:8px 0;
+}
+.watch-btn{
+  display:inline-block;
+  margin-top:15px;
+  padding:12px 18px;
+  background:#ffcc00;
+  color:#000;
+  font-weight:bold;
+  border-radius:6px;
+  text-decoration:none;
+}
+.watch-btn:hover{
+  opacity:0.9;
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <img src="" alt="Movie Banner">
-</div>
-
 <div class="container">
 
-<!-- MOVIE INFO -->
-<div class="movie-head">
-  <img id="movie-poster" src="" alt="Poster">
-  <div class="details">
-    <h1 id="movie-title"></h1>
-    <div id="movie-badges"></div>
-    <div class="desc" id="movie-desc"></div>
-  </div>
+<img class="poster"
+src="https://i.ibb.co/DjwGjMF/RD393437343037303731353740732e77686174736170702e6e6574-485234.jpg">
+
+<h1>Baby's Day Out (1994)</h1>
+
+<p class="info">
+🎭 Genre: Action / Comedy <br>
+🌐 Language: Sinhala Dubbed <br>
+📅 Release Year: 1994 <br>
+⏱ Runtime: 99 Minutes
+</p>
+
+<p>
+<b>Description:</b><br>
+A wealthy couple’s baby is kidnapped by three criminals, but the clever baby
+keeps escaping and roaming the city, leading the kidnappers into a series of
+funny and dangerous situations.
+</p>
+
+<a class="watch-btn"
+href="https://drive.google.com/file/d/12PL9OL0ZR0CfR80G9y7GbZHz47HyYnb5/view"
+target="_blank">
+▶ Watch / Download
+</a>
+
 </div>
-
-<!-- SERVERS -->
-<div class="server-box">
-  <h3>🎬 Select Server</h3>
-  <div id="server-buttons"></div>
-</div>
-
-<!-- PLAYERS -->
-<div id="player-container"></div>
-
-</div>
-
-<script>
-// ================= MOVIE DATA =================
-const moviesData = {
-  epic:{
-    title:"Epic (2013) Sinhala Subtitles",
-    badges:"Animation | English | USA | 102 min",
-    desc:"Epic animated adventure movie with Sinhala subtitles.",
-    poster:"https://i.ibb.co/nq4BkY7Q/RD393437343037303731353740732e77686174736170702e6e6574-633887.jpg",
-    players:[
-      "https://drive.google.com/file/d/1jlY0iArdFPbyGA2bQJGwAGskjePyn7Q0/preview"
-    ]
-  },
-
-  ratatouille:{
-    title:"Ratatouille (2007) Sinhala Subtitles",
-    badges:"Animation | Sinhala | 2007",
-    desc:"Ratatouille animated movie with Sinhala subtitles.",
-    poster:"https://i.ibb.co/Q7BNQrqf/RD393437343037303731353740732e77686174736170702e6e6574-569238.jpg",
-    players:[
-      "https://drive.google.com/file/d/1RnELa1HMU_B90srWoTE1woZCQRGAFI4n/preview"
-    ]
-  },
-
-  kungfupanda1:{
-    title:"Kung Fu Panda (2008) Sinhala Subtitles",
-    badges:"Animation | Sinhala | 2008",
-    desc:"Kung Fu Panda part 1 with Sinhala subtitles.",
-    poster:"https://i.ibb.co/k2h5tBLK/RD393437343037303731353740732e77686174736170702e6e6574-595944.jpg",
-    players:[
-      "https://drive.google.com/file/d/15jTNmFwXkd3Ujy6oyI69jxkyWEFl64WG/preview"
-    ]
-  },
-
-  kungfupanda2:{
-    title:"Kung Fu Panda 2 (2011) Sinhala Subtitles",
-    badges:"Animation | Sinhala | 2011",
-    desc:"Kung Fu Panda part 2 with Sinhala subtitles.",
-    poster:"https://i.ibb.co/BHj6FL0b/RD393437353638333237343640732e77686174736170702e6e6574-706082.jpg",
-    players:[
-      "https://drive.google.com/file/d/1Cci1i06NwwJpu0DKVjVA8P6xJ-PopXjy/preview"
-    ]
-  },
-
-  kungfupanda3:{
-    title:"Kung Fu Panda 3 (2016) Sinhala Subtitles",
-    badges:"Animation | Sinhala | 2016",
-    desc:"Kung Fu Panda part 3 with Sinhala subtitles.",
-    poster:"https://i.ibb.co/WWNNkr9J/RD393437353638333237343640732e77686174736170702e6e6574-595804.jpg",
-    players:[
-      "https://drive.google.com/file/d/1x56ocqZ9vANqf1xb66ILOn0w-EGc-cXm/preview"
-    ]
-  }
-};
-
-// =============== HELPERS =================
-function getQueryVariable(v){
-  const q=window.location.search.substring(1).split("&");
-  for(let i=0;i<q.length;i++){
-    const p=q[i].split("=");
-    if(p[0]==v) return p[1];
-  }
-  return null;
-}
-
-function openPlayer(id){
-  document.querySelectorAll(".player").forEach(p=>p.style.display="none");
-  document.getElementById(id).style.display="block";
-  document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-
-// =============== LOAD MOVIE =================
-window.onload=function(){
-  const key=getQueryVariable("movie") || "epic";
-  const movie=moviesData[key];
-
-  document.querySelector(".hero img").src=movie.poster;
-  document.getElementById("movie-poster").src=movie.poster;
-  document.getElementById("movie-title").innerText=movie.title;
-  document.getElementById("movie-desc").innerText=movie.desc;
-
-  let badges="";
-  movie.badges.split("|").forEach(b=>{
-    badges+=`<span class="badge">${b.trim()}</span>`;
-  });
-  document.getElementById("movie-badges").innerHTML=badges;
-
-  let btns="", players="";
-  movie.players.forEach((p,i)=>{
-    btns+=`<button onclick="openPlayer('player${i}')">▶ Player ${i+1}</button>`;
-    players+=`<div id="player${i}" class="player"><iframe src="${p}" allowfullscreen></iframe></div>`;
-  });
-
-  document.getElementById("server-buttons").innerHTML=btns;
-  document.getElementById("player-container").innerHTML=players;
-};
-</script>
 
 </body>
 </html>
